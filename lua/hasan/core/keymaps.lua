@@ -14,11 +14,11 @@ keymap.set("i", "ee", "<ESC>", { desc = "Exit insert mode with ee" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
+keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
 ---------------------
--- Window Management
+-- Window Management --
 ---------------------
 
 -- Split windows
@@ -35,15 +35,22 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 ---------------------
--- Window Navigation
+-- Window Navigation --
 ---------------------
 
 -- Use Ctrl + hjkl to navigate between splits
-keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
+keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
+keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
+keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
 
-keymap.set("n", "<leader>tt", ":term<CR>", { noremap = true, silent = true })
-
-keymap.set("n", "<leader>sz", ":ToggleTerm direction=float<CR>yazi<CR>", { noremap = true, silent = true })
+---------------------
+-- Terminal Management --
+---------------------
+-- Open floating terminal with Yazi
+keymap.set(
+	"n",
+	"<leader>sz",
+	":ToggleTerm direction=float<CR>yazi<CR>",
+	{ noremap = true, silent = true, desc = "Open floating terminal with Yazi" }
+)
