@@ -55,7 +55,7 @@ return {
 			automatic_installation = true,
 		})
 
-		-- Format on save and ensure tab width of 4 spaces
+		-- Format on save and ensure tab width of 2 spaces
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = {
 				"javascript",
@@ -74,25 +74,25 @@ return {
 				"c",
 			},
 			callback = function()
-				-- Ensure tab size is set to 4 spaces
-				vim.bo.tabstop = 4
-				vim.bo.shiftwidth = 4
-				vim.bo.softtabstop = 4
+				-- Ensure tab size is set to 2 spaces
+				vim.bo.tabstop = 2
+				vim.bo.shiftwidth = 2
+				vim.bo.softtabstop = 2
 				vim.bo.expandtab = true -- Use spaces instead of tabs
 
 				-- Format options for specific tools
 				if vim.bo.filetype == "javascript" or vim.bo.filetype == "typescript" then
 					vim.cmd(
-						[[autocmd FileType javascript,typescript setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab]]
+						[[autocmd FileType javascript,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab]]
 					)
 				elseif vim.bo.filetype == "lua" then
-					vim.cmd([[autocmd FileType lua setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab]])
+					vim.cmd([[autocmd FileType lua setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab]])
 				elseif vim.bo.filetype == "python" then
-					vim.cmd([[autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab]])
+					vim.cmd([[autocmd FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab]])
 				elseif vim.bo.filetype == "go" then
-					vim.cmd([[autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab]])
+					vim.cmd([[autocmd FileType go setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab]])
 				elseif vim.bo.filetype == "cpp" or vim.bo.filetype == "c" then
-					vim.cmd([[autocmd FileType cpp,c setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab]])
+					vim.cmd([[autocmd FileType cpp,c setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab]])
 				end
 			end,
 		})
