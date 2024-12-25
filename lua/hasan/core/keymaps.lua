@@ -7,9 +7,6 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps --
 ---------------------
 
--- Exit insert mode using "ee"
-keymap.set("i", "ee", "<ESC>", { desc = "Exit insert mode with ee" })
-
 -- Clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
