@@ -30,7 +30,17 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+-- just for ease of use
+-- Save the file with <leader>w
+keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save the file" })
 
+-- Save and quit the file with <leader>wq
+keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Save and quit the file" })
+
+-- Open terminal with <leader>tm
+keymap.set("n", "<leader>tm", ":term<CR>", { desc = "Open terminal" })
+
+keymap.set("n", "<leader>q", ":q<CR>", { desc = "To quit nvim" })
 ---------------------
 -- Window Navigation --
 ---------------------
