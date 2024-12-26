@@ -1,32 +1,31 @@
 return {
-	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = {} },
+	"neovim/nvim-lspconfig", -- Plugin for configuring LSP servers
+	event = { "BufReadPre", "BufNewFile" }, -- Load the plugin on these events
+	dependencies = { -- List of dependent plugins
+		"hrsh7th/cmp-nvim-lsp", -- Adds LSP capabilities to nvim-cmp
+		{ "antosha417/nvim-lsp-file-operations", config = true }, -- Handles file operations for LSP
+		{ "folke/neodev.nvim", opts = {} }, -- Neovim-specific Lua development tools
 	},
 	config = function()
-		-- Load necessary modules
-		local lspconfig = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local keymap = vim.keymap
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		-- Load required modules
+		local lspconfig = require("lspconfig") -- Main LSP configuration module
+		local mason_lspconfig = require("mason-lspconfig") -- Integration between Mason and LSP
+		local cmp_nvim_lsp = require("cmp_nvim_lsp") -- Adds LSP capabilities to nvim-cmp
+		local keymap = vim.keymap -- Keymap utility for defining keybindings
+		local capabilities = cmp_nvim_lsp.default_capabilities() -- Default LSP capabilities
 
-		-- Setup diagnostic signs
-		local signs = { Error = "", Warn = "", Hint = "󰠠", Info = "" }
-		for type, icon in pairs(signs) do
-			vim.fn.sign_define("DiagnosticSign" .. type, { text = icon, texthl = "DiagnosticSign" .. type, numhl = "" })
+		-- Setup diagnostic signs for errors, warnings, hints, and info
+		for type, icon in pairs({ Error = "", Warn = "", Hint = "󰠠", Info = "" }) do
+			vim.fn.sign_define("DiagnosticSign" .. type, { text = icon, texthl = "DiagnosticSign" .. type })
 		end
 
-		-- LSP Attach keybindings
+		-- Automatically set up keybindings when an LSP server attaches to a buffer
 		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}), -- Create a new autocommand group
 			callback = function(ev)
-				local opts = { buffer = ev.buf, silent = true }
+				local opts = { buffer = ev.buf, silent = true } -- Options for keybindings
 
-				-- Setup common keymaps
+				-- Define keybindings for LSP functionality
 				local bindings = {
 					{ "gR", "<cmd>Telescope lsp_references<CR>", "Show LSP references" },
 					{ "gD", vim.lsp.buf.declaration, "Go to declaration" },
@@ -47,28 +46,29 @@ return {
 					{ "<leader>rs", ":LspRestart<CR>", "Restart LSP" },
 				}
 
-				-- Assign the keymaps
+				-- Assign the keybindings
 				for _, binding in ipairs(bindings) do
-					opts.desc = binding[3]
-					keymap.set("n", binding[1], binding[2], opts)
+					opts.desc = binding[3] -- Add a description for the keybinding
+					keymap.set("n", binding[1], binding[2], opts) -- Set the keybinding in normal mode
 				end
 			end,
 		})
 
-		-- Setup mason LSP server handlers
+		-- Configure LSP servers using Mason
 		mason_lspconfig.setup_handlers({
+			-- Default handler for setting up LSP servers
 			function(server_name)
 				lspconfig[server_name].setup({ capabilities = capabilities })
 			end,
 
-			-- Example of a server with custom setup
+			-- Custom setup for the Lua LSP server
 			["lua_ls"] = function()
 				lspconfig["lua_ls"].setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
-							diagnostics = { globals = { "vim" } },
-							completion = { callSnippet = "Replace" },
+							diagnostics = { globals = { "vim" } }, -- Allow `vim` as a global
+							completion = { callSnippet = "Replace" }, -- Enable snippet completion
 						},
 					},
 				})

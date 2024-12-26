@@ -14,10 +14,14 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 
+-- Save and quit
+keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save the file" })
+keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Save and quit the file" })
+keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit Neovim" })
+
 ---------------------
 -- Window Management --
 ---------------------
-
 -- Split windows
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
@@ -30,22 +34,8 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
--- just for ease of use
--- Save the file with <leader>w
-keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save the file" })
 
--- Save and quit the file with <leader>wq
-keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Save and quit the file" })
-
--- Open terminal with <leader>tm
-keymap.set("n", "<leader>tm", ":term<CR>", { desc = "Open terminal" })
-
-keymap.set("n", "<leader>q", ":q<CR>", { desc = "To quit nvim" })
----------------------
--- Window Navigation --
----------------------
-
--- Use Ctrl + hjkl to navigate between splits
+-- Window navigation
 keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
 keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
 keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
@@ -54,10 +44,8 @@ keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
 ---------------------
 -- Terminal Management --
 ---------------------
+-- Open terminal
+keymap.set("n", "<leader>tm", ":term<CR>", { desc = "Open terminal" })
+
 -- Open floating terminal with Yazi
-keymap.set(
-	"n",
-	"<leader>sz",
-	":ToggleTerm direction=float<CR>yazi<CR>",
-	{ noremap = true, silent = true, desc = "Open floating terminal with Yazi" }
-)
+keymap.set("n", "<leader>sz", ":ToggleTerm direction=float<CR>yazi<CR>", { desc = "Open floating terminal with Yazi" })
