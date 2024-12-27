@@ -35,6 +35,7 @@ return {
 			"prismals",
 			"pyright",
 			"clangd",
+            "marksman",
 		}
 
 		mason_lspconfig.setup({
