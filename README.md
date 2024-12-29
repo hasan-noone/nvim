@@ -45,7 +45,8 @@ Some plugins and tools require external dependencies. Install them before procee
 - **Nerd Fonts**: For icons in the UI (optional but recommended).
 
 ### **Install Dependencies**
-
+#### Note : 
+- You can run <package_manager> and then install from depend.txt just to do it fast.
 #### **Linux**
 ```bash
 sudo apt update
