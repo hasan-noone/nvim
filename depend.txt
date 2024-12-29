@@ -1,0 +1,16 @@
+# External Dependencies (Required for plugins and tools)
+git               # Version control and plugin management
+ripgrep           # For Telescope's live_grep and grep_string
+fd                # For Telescope's file finder
+fzf               # Optional fuzzy finder for Telescope
+tree-sitter       # Required for nvim-treesitter
+node              # Required for LSP servers like tsserver, eslint, etc.
+python            # Required for LSP servers like pyright, black, etc.
+clang             # Required for clangd (C/C++ LSP)
+go                # Required for gopls (Go LSP)
+prettier          # Code formatting for JavaScript, HTML, CSS, etc.
+eslint            # Linting for JavaScript
+black             # Python code formatter
+flake8            # Python linter
+neovim            # Ensure Neovim is installed
+font-hack-nerd-font # Nerd Font for icons in Lualine, Telescope, etc.
