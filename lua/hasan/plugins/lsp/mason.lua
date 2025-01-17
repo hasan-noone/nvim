@@ -23,7 +23,6 @@ return {
 
 		-- LSP servers to install
 		local lsp_servers = {
-			"denols",
 			"ts_ls",
 			"html",
 			"cssls",
