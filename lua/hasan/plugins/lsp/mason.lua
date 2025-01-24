@@ -35,6 +35,7 @@ return {
 			"pyright",
 			"clangd",
             "marksman",
+            "jdtls",
 		}
 
 		mason_lspconfig.setup({

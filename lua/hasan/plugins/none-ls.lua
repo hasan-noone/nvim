@@ -30,7 +30,8 @@ return {
                 null_ls.builtins.formatting.stylua.with({
                     extra_args = { "--indent-width", "4", "--indent-type", "Spaces" }, -- Use 4 spaces
                 }),
-
+                -- Java
+                null_ls.builtins.formatting.google_java_format,
                 -- Python
                 null_ls.builtins.formatting.isort.with({
                     extra_args = { "--profile", "black", "--line-length", "88" }, -- Use 4 spaces (black-compatible)
