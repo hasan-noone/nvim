@@ -31,7 +31,9 @@ return {
                     extra_args = { "--indent-width", "4", "--indent-type", "Spaces" }, -- Use 4 spaces
                 }),
                 -- Java
-                null_ls.builtins.formatting.google_java_format,
+                null_ls.builtins.formatting.google_java_format.with({
+                    extra_args = { "--style", "{BasedOnStyle: google, IndentWidth: 4}" },
+                }),
                 -- Python
                 null_ls.builtins.formatting.isort.with({
                     extra_args = { "--profile", "black", "--line-length", "88" }, -- Use 4 spaces (black-compatible)
